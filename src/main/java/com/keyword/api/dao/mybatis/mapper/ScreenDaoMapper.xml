@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.keyword.api.dao.ScreenDao">
+	<select id="getScreenshot" parameterType="int" resultType="com.keyword.api.entity.ScreenshotWithPoint">
+		SELECT * FROM screenshot
+		WHERE applicationId = #{applicationId} ORDER BY roleSequence
+	</select>
+	
+	<select id="getPointByImage" parameterType="int" resultType="com.keyword.api.entity.PointWithKeyword">
+		SELECT * FROM point
+		WHERE imageId = #{imageId}
+	</select>
+	
+	<select id="getKeyword" parameterType="int" resultType="com.keyword.api.entity.Keyword">
+		SELECT * FROM word
+		WHERE pointId = #{pointId}
+	</select>
+</mapper>

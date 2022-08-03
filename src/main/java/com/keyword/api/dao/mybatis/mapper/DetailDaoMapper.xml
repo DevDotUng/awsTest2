@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.keyword.api.dao.DetailDao">
+	
+	<select id="getAppInfo" parameterType="int" resultType="com.keyword.api.entity.AppInfo">
+		SELECT * FROM applicationInfo
+		WHERE id = #{applicationId}
+	</select>
+	
+	<select id="getMaxRoleSequence" parameterType="int" resultType="int">
+		SELECT roleSequence FROM screenshot
+		WHERE applicationId = #{applicationId}
+		ORDER BY roleSequence DESC
+		LIMIT 1
+	</select>
+	
+	<select id="getRole" parameterType="int" resultType="String">
+		SELECT role FROM screenshot
+		WHERE applicationId = #{applicationId} AND roleSequence = #{roleSequence}
+		LIMIT 1
+	</select>
+	
+	<select id="getImage" parameterType="int" resultType="com.keyword.api.entity.Screenshot">
+		SELECT * FROM screenshot
+		WHERE applicationId = #{applicationId} AND roleSequence = #{roleSequence}
+	</select>
+	
+</mapper>

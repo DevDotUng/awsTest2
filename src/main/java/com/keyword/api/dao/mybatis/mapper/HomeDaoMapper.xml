@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.keyword.api.dao.HomeDao">
+	
+	<select id="getAppInfoList" resultType="com.keyword.api.entity.AppInfo">
+		SELECT * FROM applicationInfo
+		<where>
+			<if test="category != null">
+		         category = #{category}
+		    </if>
+		</where>
+	</select>
+	
+	<select id="getScreenshotList" parameterType="int" resultType="com.keyword.api.entity.Screenshot">
+		SELECT * FROM screenshot where applicationId = #{applicationId}
+	</select>
+	
+	<insert id="insert" parameterType="com.keyword.api.entity.AppInfo">
+		INSERT INTO applicationInfo
+		(name, icon, category, corperation)
+		VALUES
+		(#{name}, #{icon}, #{category}, #{corperation});
+	</insert>
+</mapper>
