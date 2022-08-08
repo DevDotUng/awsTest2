@@ -5,7 +5,6 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.keyword.api.entity.AppInfo;
-import com.keyword.api.entity.HomeResult;
 import com.keyword.api.entity.Screenshot;
 
 @Mapper
